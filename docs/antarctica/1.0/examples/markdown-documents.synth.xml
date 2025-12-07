@@ -2,9 +2,6 @@
 <!--
   Antarctica Markdown Documents Example
   A simple project demonstrating markdown text file management
-
-  Protocol Version: 1.0.0
-  Schema: synth-protocol
 -->
 <synthProject xmlns="https://chevp.github.io/synth-protocol/schema/synth/project/1.0"
               xmlns:core="https://chevp.github.io/synth-protocol/schema/synth/core/1.0">
