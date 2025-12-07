@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Antarctica Markdown Documents Example
+  A simple project demonstrating markdown text file management
+
+  Protocol Version: 1.0.0
+  Schema: synth-protocol
+-->
+<synthProject xmlns="https://chevp.github.io/synth-protocol/schema/synth/project/1.0"
+              xmlns:core="https://chevp.github.io/synth-protocol/schema/synth/core/1.0">
+
+    <!-- FILE HEADER -->
+    <header>
+        <magic>SYNTH</magic>
+        <formatVersion>1</formatVersion>
+        <schemaVersion>1.0.0</schemaVersion>
+        <createdAt>1733580000000</createdAt>
+        <modifiedAt>1733580000000</modifiedAt>
+        <compressed>false</compressed>
+        <compressionType>NONE</compressionType>
+    </header>
+
+    <!-- PROJECT ROOT -->
+    <project>
+        <core:entityId>
+            <uuid>proj_antarctica_markdown</uuid>
+            <version>1</version>
+            <createdAt>1733580000000</createdAt>
+            <updatedAt>1733580000000</updatedAt>
+        </core:entityId>
+        <name>Antarctica Markdown Documents</name>
+        <description>Example project for managing markdown text files</description>
+        <schemaVersion>1.0.0</schemaVersion>
+        <settings>
+            <defaultSceneId>scene_docs</defaultSceneId>
+            <autoSaveEnabled>true</autoSaveEnabled>
+            <autoSaveIntervalSeconds>60</autoSaveIntervalSeconds>
+        </settings>
+    </project>
+
+    <!-- TAGS -->
+    <tags>
+        <tag>
+            <core:entityId>
+                <uuid>tag_published</uuid>
+                <version>1</version>
+            </core:entityId>
+            <name>Published</name>
+            <color>#4CAF50</color>
+            <category>status</category>
+        </tag>
+        <tag>
+            <core:entityId>
+                <uuid>tag_draft</uuid>
+                <version>1</version>
+            </core:entityId>
+            <name>Draft</name>
+            <color>#FFC107</color>
+            <category>status</category>
+        </tag>
+    </tags>
+
+    <!-- CLUSTER NODES -->
+    <clusterNodes>
+        <!-- Root Scene -->
+        <node>
+            <core:entityId>
+                <uuid>scene_docs</uuid>
+                <version>1</version>
+            </core:entityId>
+            <name>Documents</name>
+            <nodeType>CLUSTER_NODE_TYPE_SCENE</nodeType>
+            <state>CLUSTER_NODE_STATE_ACTIVE</state>
+            <childIds>
+                <id>folder_articles</id>
+                <id>folder_notes</id>
+            </childIds>
+            <siblingOrder>0</siblingOrder>
+        </node>
+
+        <!-- Articles Folder -->
+        <node>
+            <core:entityId>
+                <uuid>folder_articles</uuid>
+                <version>1</version>
+            </core:entityId>
+            <name>Articles</name>
+            <nodeType>CLUSTER_NODE_TYPE_FOLDER</nodeType>
+            <state>CLUSTER_NODE_STATE_ACTIVE</state>
+            <parentId>scene_docs</parentId>
+            <childIds>
+                <id>doc_getting_started</id>
+                <id>doc_best_practices</id>
+            </childIds>
+            <siblingOrder>0</siblingOrder>
+        </node>
+
+        <!-- Notes Folder -->
+        <node>
+            <core:entityId>
+                <uuid>folder_notes</uuid>
+                <version>1</version>
+            </core:entityId>
+            <name>Notes</name>
+            <nodeType>CLUSTER_NODE_TYPE_FOLDER</nodeType>
+            <state>CLUSTER_NODE_STATE_ACTIVE</state>
+            <parentId>scene_docs</parentId>
+            <childIds>
+                <id>doc_ideas</id>
+            </childIds>
+            <siblingOrder>1</siblingOrder>
+        </node>
+
+        <!-- Getting Started Document -->
+        <node>
+            <core:entityId>
+                <uuid>doc_getting_started</uuid>
+                <version>1</version>
+            </core:entityId>
+            <name>Getting Started</name>
+            <nodeType>CLUSTER_NODE_TYPE_DOCUMENT</nodeType>
+            <state>CLUSTER_NODE_STATE_ACTIVE</state>
+            <parentId>folder_articles</parentId>
+            <siblingOrder>0</siblingOrder>
+            <tagIds>
+                <id>tag_published</id>
+            </tagIds>
+            <metadata>
+                <entry key="format">markdown</entry>
+                <entry key="mime_type">text/markdown</entry>
+            </metadata>
+        </node>
+
+        <!-- Best Practices Document -->
+        <node>
+            <core:entityId>
+                <uuid>doc_best_practices</uuid>
+                <version>1</version>
+            </core:entityId>
+            <name>Best Practices</name>
+            <nodeType>CLUSTER_NODE_TYPE_DOCUMENT</nodeType>
+            <state>CLUSTER_NODE_STATE_ACTIVE</state>
+            <parentId>folder_articles</parentId>
+            <siblingOrder>1</siblingOrder>
+            <tagIds>
+                <id>tag_draft</id>
+            </tagIds>
+            <metadata>
+                <entry key="format">markdown</entry>
+                <entry key="mime_type">text/markdown</entry>
+            </metadata>
+        </node>
+
+        <!-- Ideas Document -->
+        <node>
+            <core:entityId>
+                <uuid>doc_ideas</uuid>
+                <version>1</version>
+            </core:entityId>
+            <name>Ideas</name>
+            <nodeType>CLUSTER_NODE_TYPE_DOCUMENT</nodeType>
+            <state>CLUSTER_NODE_STATE_ACTIVE</state>
+            <parentId>folder_notes</parentId>
+            <siblingOrder>0</siblingOrder>
+            <tagIds>
+                <id>tag_draft</id>
+            </tagIds>
+            <metadata>
+                <entry key="format">markdown</entry>
+                <entry key="mime_type">text/markdown</entry>
+            </metadata>
+        </node>
+    </clusterNodes>
+
+    <!-- COMPONENTS (Text Content) -->
+    <components>
+        <!-- Getting Started Content -->
+        <component>
+            <core:entityId>
+                <uuid>comp_getting_started_text</uuid>
+                <version>1</version>
+            </core:entityId>
+            <clusterNodeId>doc_getting_started</clusterNodeId>
+            <componentType>text_content</componentType>
+            <state>COMPONENT_STATE_ENABLED</state>
+            <schemaVersion>1.0.0</schemaVersion>
+            <!-- Base64: "# Getting Started\n\nWelcome to Antarctica!\n\n## Quick Start\n\n1. Create a new project\n2. Add your documents\n3. Organize with folders and tags\n\n## Features\n\n- Markdown editing\n- Folder organization\n- Tag-based filtering\n- Full-text search" -->
+            <data encoding="base64" originalEncoding="UTF-8" mimeType="text/markdown" byteSize="234">IyBHZXR0aW5nIFN0YXJ0ZWQKCldlbGNvbWUgdG8gQW50YXJjdGljYSEKCiMjIFF1aWNrIFN0YXJ0CgoxLiBDcmVhdGUgYSBuZXcgcHJvamVjdAoyLiBBZGQgeW91ciBkb2N1bWVudHMKMy4gT3JnYW5pemUgd2l0aCBmb2xkZXJzIGFuZCB0YWdzCgojIyBGZWF0dXJlcwoKLSBNYXJrZG93biBlZGl0aW5nCi0gRm9sZGVyIG9yZ2FuaXphdGlvbgotIFRhZy1iYXNlZCBmaWx0ZXJpbmcKLSBGdWxsLXRleHQgc2VhcmNo</data>
+        </component>
+
+        <!-- Best Practices Content -->
+        <component>
+            <core:entityId>
+                <uuid>comp_best_practices_text</uuid>
+                <version>1</version>
+            </core:entityId>
+            <clusterNodeId>doc_best_practices</clusterNodeId>
+            <componentType>text_content</componentType>
+            <state>COMPONENT_STATE_ENABLED</state>
+            <schemaVersion>1.0.0</schemaVersion>
+            <!-- Base64: "# Best Practices\n\n## Document Organization\n\n- Use descriptive names\n- Group related documents in folders\n- Apply consistent tagging\n\n## Writing Tips\n\n- Use headings for structure\n- Keep paragraphs concise\n- Include code blocks for examples\n\n```javascript\nconst example = 'Like this';\n```" -->
+            <data encoding="base64" originalEncoding="UTF-8" mimeType="text/markdown" byteSize="289">IyBCZXN0IFByYWN0aWNlcwoKIyMgRG9jdW1lbnQgT3JnYW5pemF0aW9uCgotIFVzZSBkZXNjcmlwdGl2ZSBuYW1lcwotIEdyb3VwIHJlbGF0ZWQgZG9jdW1lbnRzIGluIGZvbGRlcnMKLSBBcHBseSBjb25zaXN0ZW50IHRhZ2dpbmcKCiMjIFdyaXRpbmcgVGlwcwoKLSBVc2UgaGVhZGluZ3MgZm9yIHN0cnVjdHVyZQotIEtlZXAgcGFyYWdyYXBocyBjb25jaXNlCi0gSW5jbHVkZSBjb2RlIGJsb2NrcyBmb3IgZXhhbXBsZXMKCmBgYGphdmFzY3JpcHQKY29uc3QgZXhhbXBsZSA9ICdMaWtlIHRoaXMnOwpgYGA=</data>
+        </component>
+
+        <!-- Ideas Content -->
+        <component>
+            <core:entityId>
+                <uuid>comp_ideas_text</uuid>
+                <version>1</version>
+            </core:entityId>
+            <clusterNodeId>doc_ideas</clusterNodeId>
+            <componentType>text_content</componentType>
+            <state>COMPONENT_STATE_ENABLED</state>
+            <schemaVersion>1.0.0</schemaVersion>
+            <!-- Base64: "# Ideas\n\n## Future Features\n\n- [ ] Real-time collaboration\n- [ ] Version history\n- [ ] Export to PDF\n- [ ] Plugin system\n\n## Notes\n\nThis is a draft document for brainstorming." -->
+            <data encoding="base64" originalEncoding="UTF-8" mimeType="text/markdown" byteSize="168">IyBJZGVhcwoKIyMgRnV0dXJlIEZlYXR1cmVzCgotIFsgXSBSZWFsLXRpbWUgY29sbGFib3JhdGlvbgotIFsgXSBWZXJzaW9uIGhpc3RvcnkKLSBbIF0gRXhwb3J0IHRvIFBERgotIFsgXSBQbHVnaW4gc3lzdGVtCgojIyBOb3RlcwoKVGhpcyBpcyBhIGRyYWZ0IGRvY3VtZW50IGZvciBicmFpbnN0b3JtaW5nLg==</data>
+        </component>
+    </components>
+
+</synthProject>
